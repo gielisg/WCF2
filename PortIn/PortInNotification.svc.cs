@@ -27,7 +27,7 @@ namespace PortIn
                 
 
 
-                //success
+                // success
                 if (portInNotification.ServiceId == "1")
                     portingResult = new PortingResult() { ResponseCode = ResponseCode.PNVAL, ReasonText = "Porting request has been accepted by CNPMS successfully and the application should await the next confirmation." };
                 //failiure
