@@ -7,9 +7,7 @@ using System.Web;
 namespace PortIn.DataContracts
 {
     [MessageContract]
-    public class ProductServiceID
+    public class ConnectServiceResponse : ExtendedResponse
     {
-        [MessageBodyMember]
-        public string serviceID { get; set; }
     }
 }
