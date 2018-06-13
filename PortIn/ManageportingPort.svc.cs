@@ -12,7 +12,7 @@ namespace PortIn
     // NOTE: In order to launch WCF Test Client for testing this service, please select ManageportingPort.svc or ManageportingPort.svc.cs at the Solution Explorer and start debugging.
     public class ManageportingPort : IManageportingPort
     {
-        
+
         public ConnectServiceResponse ConnectService(ConnectService Request)
         {
             //throw new NotImplementedException();
@@ -21,24 +21,69 @@ namespace PortIn
             //  Check the Reference Id is not null
             if (Request.ServiceDetailElement.ReferenceId.Id == null)
             {
-                throw new FaultException(new FaultReason("test NULL reference.Id"));
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode="500",
+                        statusDescription= "Reference Id is null"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
             }
             //  Invalid Reference Id 
             if (Request.ServiceDetailElement.ReferenceId.Id != "VT40000287_160727")
             {
-                throw new FaultException(new FaultReason("Invalid Reference Id"));
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "Invalid Reference Id "
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
                 
+
             }
             //  Check the MSISDN
             if (Request.ServiceDetailElement.ServiceID == null)
             {
-                throw new FaultException(new FaultReason("test NULL service.Id"));
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "ServiceID is null"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
             }
 
             //  Invalid MSISDN
             if (Request.ServiceDetailElement.ServiceID.serviceID != "98340654")
             {
-                throw new FaultException(new FaultReason("test 98340654 service.Id"));
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "Invalid MSISDN"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
             }
 
             ConnectServiceResponse = new ConnectServiceResponse();
