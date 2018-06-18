@@ -99,5 +99,34 @@ namespace PortIn
 
         }
 
+        public PortInNotificationResponse PortInNotification(PortInNotification Request)
+        {
+            //throw new NotImplementedException();
+            PortInNotificationResponse portInNotificationResponse = new PortInNotificationResponse();
+            //  Check the Reference Id is not null
+            if (Request.PortingRefernceID.Id == null)
+            {
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "Reference Id is null"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
+            }
+
+            portInNotificationResponse.RequestId = Request.PortingRequestID.Id;
+            portInNotificationResponse.ReferenceId = Request.PortingRefernceID.Id;
+            portInNotificationResponse.ResponseDateTime = DateTime.Now;
+            portInNotificationResponse.RequestDateTime = Request.sdpServiceHeaders.consumerReferenceDateTime;
+            portInNotificationResponse.Results = "SUCCESS";
+            return portInNotificationResponse;
+
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Web;
 namespace PortIn.DataContracts
 {
     [MessageContract]
-    public class ConnectServiceResponse : SDPResponse
+    public class PortInNotificationResponse : SDPResponse
     {
     }
 }

@@ -21,6 +21,7 @@ namespace PortIn.DataContracts
 
     }
 
+   
     [MessageContract]
     public class ServiceInfo
     {
@@ -28,7 +29,7 @@ namespace PortIn.DataContracts
         /// Unique ID for the portability request
         /// </summary>
         [MessageBodyMember]
-        public PortingReferenceID ReferenceId { get; set; }
+        public PortingRefernceID ReferenceId { get; set; }
         /// <summary>
         /// Service number (for example: mobile number)
         /// </summary>

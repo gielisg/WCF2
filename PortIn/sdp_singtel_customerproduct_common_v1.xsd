@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0" targetNamespace="http://group.singtel.com/customerproduct-common/types/v1" xmlns:ns1="http://group.singtel.com/core/types/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:annotation>
+    <xs:documentation>Singtel interfaces.
+</xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://group.singtel.com/core/types/v1" schemaLocation="sdp_singtel_core_v1.xsd"/>
+
+  <xs:complexType name="ProductID" final="extension restriction">
+    <xs:annotation>
+      <xs:documentation>A ProductSpecification procured by a Customer. A Product models this instance of a ProductSpecification.
+
+Note:  In Amdocs Ordering this serves as both an Assigned Product and an Ordered Product. An Ordered Product has no
+activation date and has a status indicating that it is ordered.
+
+A Product may be part of a complex structure of Products. The structure is typically based on relationships between
+ProductSpecifications defined in ProductSpecContainment and ProductSpecRelationship. The structure is instantiated
+through ProductContainment and ProductRelationship.
+
+A Product is uniquely identified by its Product.ID and Product.version. When information regarding an existing Product
+is changed a new instance is created with the same Product.ID and different Product.version. If a Product has
+associated contained Products defined in ProductContainment then when it changes by definition all of the contained
+Products must have new instances created for them. The history of a product is described by multiple Products with the
+same Product.ID value.
+
+The permitted status transitions of a Product are defined by the provider of any status update operations.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}Product .
+Derived from PIM entity Product in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id">
+        <xs:annotation>
+          <xs:documentation>A unique identifier when combined with Product.version. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="version">
+        <xs:annotation>
+          <xs:documentation>A unique identifier when combined with Product.ID. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProductServiceExternalID" final="extension restriction">
+    <xs:annotation>
+      <xs:documentation>A ProductSpecification procured by a Customer. A Product models this instance of a ProductSpecification.
+
+Note:  In Amdocs Ordering this serves as both an Assigned Product and an Ordered Product. An Ordered Product has no
+activation date and has a status indicating that it is ordered.
+
+A Product may be part of a complex structure of Products. The structure is typically based on relationships between
+ProductSpecifications defined in ProductSpecContainment and ProductSpecRelationship. The structure is instantiated
+through ProductContainment and ProductRelationship.
+
+A Product is uniquely identified by its Product.ID and Product.version. When information regarding an existing Product
+is changed a new instance is created with the same Product.ID and different Product.version. If a Product has
+associated contained Products defined in ProductContainment then when it changes by definition all of the contained
+Products must have new instances created for them. The history of a product is described by multiple Products with the
+same Product.ID value.
+
+The permitted status transitions of a Product are defined by the provider of any status update operations.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}Product .
+Derived from PIM entity Product in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="externalID" type="ns1:AdditionalIdKey" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="serviceID" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The users means to identify a Product. For example a mobile telephone number, an e-mail address, an IP address. Not all
+Products have users.
+</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="ProductServiceID" final="extension restriction">
+    <xs:annotation>
+      <xs:documentation>A ProductSpecification procured by a Customer. A Product models this instance of a ProductSpecification.
+
+Note:  In Amdocs Ordering this serves as both an Assigned Product and an Ordered Product. An Ordered Product has no
+activation date and has a status indicating that it is ordered.
+
+A Product may be part of a complex structure of Products. The structure is typically based on relationships between
+ProductSpecifications defined in ProductSpecContainment and ProductSpecRelationship. The structure is instantiated
+through ProductContainment and ProductRelationship.
+
+A Product is uniquely identified by its Product.ID and Product.version. When information regarding an existing Product
+is changed a new instance is created with the same Product.ID and different Product.version. If a Product has
+associated contained Products defined in ProductContainment then when it changes by definition all of the contained
+Products must have new instances created for them. The history of a product is described by multiple Products with the
+same Product.ID value.
+
+The permitted status transitions of a Product are defined by the provider of any status update operations.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}Product .
+Derived from PIM entity Product in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="serviceID">
+        <xs:annotation>
+          <xs:documentation>The users means to identify a Product. For example a mobile telephone number, an e-mail address, an IP address. Not all
+Products have users.
+</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="PartyRoleProductInvolvementType">
+    <xs:annotation>
+      <xs:documentation>The type of role that a PartyRole can play for a Product, for example a third party supplier may be the provider of
+access to the GeographicSite where the Product is installed. Values are set by implementation.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}PartyRoleProductInvolvementType .
+Derived from PIM entity PartyRoleProductInvolvementType in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="ProductActivationStatus">
+    <xs:annotation>
+      <xs:documentation>The activation state of the Product. For example active, ceased.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}ProductActivationStatus .
+Derived from PIM entity ProductActivationStatus in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ACTIVE">
+        <xs:annotation>
+          <xs:documentation>The Product is active and can receive service (and will incur recurring charges if relevant).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CEASED">
+        <xs:annotation>
+          <xs:documentation>The Product is disconnected or cancelled and  cannot receive service (and will no longer incur recurring charges).
+Although it is possible for the Product to be re-established to an active state it is generally possible only within a
+window of time after it has moved to a cease state as the associated resources may no longer be available.
+</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SUSPENDED">
+        <xs:annotation>
+          <xs:documentation>The Product is suspended and cannot receive service. It may still incur charges at the same or reduced level, depending
+on business rules. Typically all associated resources remain allocated and it is possible for the Product to move to an
+active state again.
+</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="ProductState">
+    <xs:annotation>
+      <xs:documentation>The business lifecycle state of a Product. For example ordered, assigned, cancelled.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}ProductState .
+Derived from PIM entity ProductState in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ASSIGNED">
+        <xs:annotation>
+          <xs:documentation>The Product is currently installed/supplied for the customer, or was installed/supplied previously but replaced by a
+more recent Product.
+</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CANCELED">
+        <xs:annotation>
+          <xs:documentation>The Product was created as part of a ProductOrderItem that has been cancelled.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ORDERED">
+        <xs:annotation>
+          <xs:documentation>The Product is being ordered. There may be multiple Products with the same Product.ID value, but different Product.
+version values with this state when future orders exist.
+</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="ProductIDAndVersion" final="extension restriction">
+    <xs:annotation>
+      <xs:documentation>A ProductSpecification procured by a Customer. A Product models this instance of a ProductSpecification.
+
+Note:  In Amdocs Ordering this serves as both an Assigned Product and an Ordered Product. An Ordered Product has no
+activation date and has a status indicating that it is ordered.
+
+A Product may be part of a complex structure of Products. The structure is typically based on relationships between
+ProductSpecifications defined in ProductSpecContainment and ProductSpecRelationship. The structure is instantiated
+through ProductContainment and ProductRelationship.
+
+A Product is uniquely identified by its Product.ID and Product.version. When information regarding an existing Product
+is changed a new instance is created with the same Product.ID and different Product.version. If a Product has
+associated contained Products defined in ProductContainment then when it changes by definition all of the contained
+Products must have new instances created for them. The history of a product is described by multiple Products with the
+same Product.ID value.
+
+The permitted status transitions of a Product are defined by the provider of any status update operations.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerproduct/types-unqualified/v1}Product,
+Derived from PIM entity Product in the domain product.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="id">
+        <xs:annotation>
+          <xs:documentation>The Ordering internal identifier when combined with version. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="version">
+        <xs:annotation>
+          <xs:documentation>The Ordering internal identifier when combined with id. </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="255"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+</xs:schema>
+

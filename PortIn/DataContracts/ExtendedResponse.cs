@@ -7,7 +7,7 @@ using System.Web;
 namespace PortIn.DataContracts
 {
     [MessageContract]
-    public class ExtendedResponse
+    public class SDPResponse
     {
         [MessageBodyMember]
         public string RequestId { get; set; }

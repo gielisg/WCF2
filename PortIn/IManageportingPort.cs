@@ -1,12 +1,5 @@
 ﻿using PortIn.DataContracts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Security;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.ServiceModel.Web;
-using System.Text;
 
 namespace PortIn
 {
@@ -18,6 +11,9 @@ namespace PortIn
         [FaultContract(typeof(SDPStatusFault),Name = "connectServiceFault",Namespace ="sgc")]
         ConnectServiceResponse ConnectService(ConnectService Request);
 
-
+        [OperationContract]
+        [FaultContract(typeof(SDPStatusFault), Name = "portInNotificationFault", Namespace = "sgc")]
+        PortInNotificationResponse PortInNotification(PortInNotification Request);
+        
     }
 }

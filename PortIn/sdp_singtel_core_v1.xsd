@@ -1,0 +1,2869 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema elementFormDefault="qualified" version="1.0"
+	targetNamespace="http://group.singtel.com/core/types/v1" xmlns:tns="http://group.singtel.com/core/types/v1"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:annotation>
+		<xs:documentation>Singtel interfaces.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="associatedEntityNotFoundFault" type="tns:AssociatedEntityNotFoundFaultInfo" />
+
+	<xs:element name="billingFault" type="tns:BillingFaultInfo" />
+
+	<xs:element name="dateRangeInvalidFault" type="tns:DateRangeInvalidFaultInfo" />
+
+	<xs:element name="dateValueFault" type="tns:DateValueFaultInfo" />
+
+	<xs:element name="duplicateUniqueAttributeFault" type="tns:DuplicateUniqueAttributeFaultInfo" />
+
+	<xs:element name="entityCannotBeUpdatedFault" type="tns:EntityCannotBeUpdatedFaultInfo" />
+
+	<xs:element name="entityKeyAlreadyExistsFault" type="tns:EntityKeyAlreadyExistsFaultInfo" />
+
+	<xs:element name="entityLockedFault" type="tns:EntityLockedFaultInfo" />
+
+	<xs:element name="entityNotFoundFault" type="tns:EntityNotFoundFaultInfo" />
+
+	<xs:element name="entityStatusTransitionFault" type="tns:EntityStatusTransitionFaultInfo" />
+
+	<xs:element name="inconsistentParameterFault" type="tns:InconsistentParameterFaultInfo" />
+
+	<xs:element name="inputValidationContentFault" type="tns:InputValidationContentFaultInfo" />
+
+	<xs:element name="inputValidationFault" type="tns:InputValidationFaultInfo" />
+
+	<xs:element name="inputValidationSizeFault" type="tns:InputValidationSizeFaultInfo" />
+
+	<xs:element name="invalidParameterFault" type="tns:InvalidParameterFaultInfo" />
+
+	<xs:element name="invalidUsageFault" type="tns:InvalidUsageFaultInfo" />
+
+	<xs:element name="mandatoryParameterMissingFault" type="tns:MandatoryParameterMissingFaultInfo" />
+
+	<xs:element name="multipleInstanceFoundFault" type="tns:MultipleInstanceFoundFaultInfo" />
+
+	<xs:element name="numericValueNotInRangeFault" type="tns:NumericValueNotInRangeFaultInfo" />
+
+	<xs:element name="objectCreationFault" type="tns:ObjectCreationFaultInfo" />
+
+	<xs:element name="userNotEntityOwnerFault" type="tns:UserNotEntityOwnerFaultInfo" />
+
+	<xs:complexType name="AdditionalId" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Defines the unique key in an external system of an
+				object instance in the Amdocs informaiton model. Entities that might
+				be stored in external systems include an attribute additionalKeys
+				whose type is AdditionalId[]. These additional keys
+				are provided by
+				consumers to create/update operations, and then used to
+				identify
+				object instances according to the
+				rules defined by {@link
+				com.amdocs.informationmodel.
+				@valueobject
+				:
+				Restriction of
+				{http://amdocs/pbg-portfolio/core/types-unqualified/v1}AdditionalId
+				.
+				Derived from PIM entity AdditionalId in the domain common.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityId">
+				<xs:annotation>
+					<xs:documentation>Identifies the corresponding entity in the
+						external system. For example the table name or class name.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="key">
+				<xs:annotation>
+					<xs:documentation>The key that identifies an object instance in
+						this {@link .getSystemId() system. Keys are represented here as
+						simple
+						strings; for non-string data, or concatenated keys, it is up
+						to the
+						external system to provide a canonical format of
+						the key.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="systemId" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>A unique identifier representing the external
+						system that hosts this object instance. These identifiers are
+						internal to
+						Amdocs and defined by each implementation.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AdditionalIdKey" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Defines the unique key in an external system of an
+				object instance in the Amdocs informaiton model. Entities that might
+				be stored in external systems include an attribute additionalKeys
+				whose type is AdditionalId[]. These additional keys
+				are provided by
+				consumers to create/update operations, and then used to
+				identify
+				object instances according to the
+				rules defined by {@link
+				com.amdocs.informationmodel.
+				@valueobject
+				:
+				Restriction of
+				{http://amdocs/pbg-portfolio/core/types-unqualified/v1}AdditionalId
+				.
+				Derived from PIM entity AdditionalId in the domain common.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="key">
+				<xs:annotation>
+					<xs:documentation>The key that identifies an object instance in
+						this {@link .getSystemId() system. Keys are represented here as
+						simple
+						strings; for non-string data, or concatenated keys, it is up
+						to the
+						external system to provide a canonical format of
+						the key.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ApplicationContext" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Common contexual data that is supplied by the
+				consumer to most operations.
+				Application context may be used to
+				enable service middleware to route an
+				operation to a provider.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="countryCode" type="tns:CountryCode"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If support it, provider localizes according to
+						the specified countryCode
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="languageCode" type="tns:LanguageCode"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>If support it, provider localizes according to
+						the specified languageCode
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="AssociatedEntityNotFoundFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>An association cannot be created as the associated
+				entity cannot be found. The key used to try to find the associated
+				entity is returned in the attributes of the exception.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	
+	<xs:complexType name="DateRange" final="extension restriction">
+				<xs:sequence>
+					<xs:element name="fromDateTime" type="xs:date" />
+					<xs:element name="toDateTime" type="xs:date" />	
+				</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrText" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is a text.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:maxLength value="1023" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+		<xs:complexType name="FlexAttr" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Defines a flexble attribute; an attribute of an
+				object that is not statically defined, but rather defined by some
+				application specific meta-data about the entity. Entities that might
+				have flexible attributes include anattribute flexAttrs whose type is
+				FlexAttr[]. The definition and derivation of the flexible attributes
+				is defined by the provider.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of this flexible attribute.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="260" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrDateTime" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is a date and time value.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" type="xs:dateTime" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrDecimal" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is a decimal number.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" type="xs:decimal" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrIndicator" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is an indicator.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean">
+								<xs:pattern value="false|true" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrInteger" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is an integer.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" type="xs:integer" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="FlexAttrURI" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A flexible attribute that is a URL.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="tns:FlexAttr">
+				<xs:sequence>
+					<xs:element name="value" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>The value of the flexible attribute.
+							</xs:documentation>
+						</xs:annotation>
+						<xs:simpleType>
+							<xs:restriction base="xs:anyURI">
+								<xs:maxLength value="2048" />
+								<xs:pattern value="https?://.+" />
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="BillingFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The Billing operation has returned an error.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="BinaryObject" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>type should be used for embedding textual documents
+				and other common content types such as word, pdf, gif, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="characterSetCode" type="tns:CharacterSetCode"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>the character set associated with the binary
+						content (if the media-type is text)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="content" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>binary content</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:base64Binary">
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="filename" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>the file name associated with the binary content
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="mediaTypeCode" type="tns:MediaTypeCode"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>the media type associated with the binary content
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BinaryObjectFileName" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>type should be used for embedding textual documents
+				and other common content types such as word, pdf, gif, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="filename" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>the file name associated with the binary content
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DateRangeInvalidFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The date range is not valid. A date range is not
+				valid if a start date is after and end date. It is valid for the
+				start
+				date to be equal to the end date.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="DateValueFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The date value is not in the permissable range of
+				values. For example the creation date is in the future or the close
+				date is not in the permissable configured range.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="lowerLimit" type="xs:dateTime"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The lower limit that the value can take.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="upperLimit" type="xs:dateTime"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The upper limit that the value can take.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:dateTime" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The value of the date that is invalid.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="DuplicateUniqueAttributeFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Values for a unique attribute are not unique.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="parameterNames" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the parameter that requires a value.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameterName" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="127" />
+									<xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EntityCannotBeUpdatedFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>An entity instance cannot be identified from the
+				information provided. It is not expected in general that the
+				consumer
+				can correct this problem. However, the message might
+				indicate to the
+				consumer if the problem is completely unexpected,
+				or
+				perhaps might have been expected (for example if the entity is of a
+				type that can be archived and removed from the
+				backend persistent
+				store e.g. by cleanup process). The key values used to
+				find the
+				entity are returned in the exception
+				attributes.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EntityKeyAlreadyExistsFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>An instance of an entity already exists with the
+				same key values. The entity type and key values are provided in the
+				exception attributes.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the entity being created.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name and value pairs that describe
+						the key which an instance of the entity already uses.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EntityLockedFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>An operation could not be performed on an entity
+				instance because the entity is locked by another operation.
+				The
+				consumer can be expected to correct this by:
+				waiting for the lock to
+				be released
+				determining which (user) agent is holding the entity
+				locked and requesting that
+				it be freed
+				The key values identifying the
+				entity instance are returned in the
+				exception parameters.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttr"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EntityNotFoundFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>An entity instance cannot be identified from the
+				information provided. It is not expected in general that the
+				consumer
+				can correct this problem. However, the message might
+				indicate to the
+				consumer if the problem is completely unexpected,
+				or
+				perhaps might have been expected (for example if the entity is of a
+				type that can be archived and removed from the
+				backend persistent
+				store e.g. by cleanup process). The key values used to
+				find the
+				entity are returned in the exception
+				attributes.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="EntityStatusTransitionFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The status of an entity instance from a modify
+				operation is not a valid status transition from the current status.
+				The
+				attributes of the exception specify the identification of the
+				entity instance,
+				the current status and status requested.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="currentStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The current status of the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1023" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="proposedStatus" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The new status that the consumer has proposed for
+						the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="1023" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InconsistentParameterFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Two or more parameters have been sent as input to
+				the operation that are inconsistent with each other. For example for
+				a particular operation a Contact sent in one parameter and a
+				ContactPartyRoleRelationship sent in another might have
+				to be
+				consistent for the same Contact.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="InputValidationContentFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The request contains content which does not meet
+				the preset expression limitations.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="InputValidationFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The request contains content which fails
+				validation.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="InputValidationSizeFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The request contains content which does not meet
+				the preset minimum or maximum size limitations.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="InvalidParameterFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A parameter passed in the request is invalid.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="parameterNames" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the parameter that requires a value.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameterName" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="127" />
+									<xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="InvalidUsageFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation></xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:complexType name="MandatoryParameterMissingFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A mandatory parameter for an operation has not been
+				received. The name of the parameter is provided in the
+				MandatoryParameterMissingException.parameterName attribute.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="parameterNames" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the parameter that requires a value.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="parameterName" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:maxLength value="127" />
+									<xs:whiteSpace value="collapse" />
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="MultipleInstanceFoundFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A retrieve operation should have only returned a
+				single instance of an entity, however multiple matching instances
+				were
+				found. For example when retrieving by a unique key value. The
+				exception
+				parameters will contain the key values used in
+				the retrieve.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="entityTypeName" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The name of the data type.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="127" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="keyValues" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>An array of name value pairs that were used to
+						try to identify the entity instance.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="keyValue" type="tns:FlexAttrText"
+							minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="NumericValueNotInRangeFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>A numeric value is not valid, as it is not part of
+				a valid range of numbers. The exception attributes will provide the
+				consumer with valid range.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="lowerLimit" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Lower bound of the valid range of values.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="upperLimit" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Upper bound of the valid range of values.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="value" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>The value which did not fall in range
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ObjectCreationFaultInfo" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The creation of a new entity instance was
+				unsuccessful.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:simpleType name="SimpleFrequency">
+		<xs:annotation>
+			<xs:documentation>A simple pattern to express a regular pattern based
+				on fixed time units. For example 6 months or 2 years.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:duration">
+			<xs:pattern
+				value="P((\p{Nd}{1,9}Y)|(\p{Nd}{1,9}M)|(\p{Nd}{1,9}D)|(T((\p{Nd}{1,9}H)|(\p{Nd}{1,9}M)|(\p{Nd}{1,9}S))))" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="SortCriterion" final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>Defines a single sort citerion to be applied by the
+				provider during a search operation.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ascending">
+				<xs:annotation>
+					<xs:documentation>If true then sort in ascending order, else
+						descending order.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:boolean">
+						<xs:pattern value="false|true" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="fieldName">
+				<xs:annotation>
+					<xs:documentation>The name of the field to sort by.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="255" />
+						<xs:whiteSpace value="collapse" />
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="TimePeriod">
+		<xs:annotation>
+			<xs:documentation>Represents a period of time. The meaning of the
+				individual fields is defined by
+				the provider, and is typically
+				influenced by a and lt;i and gt;business
+				calendar and lt;
+				/i and gt;
+				that determines significant time. For example, 3 days might
+				span a
+				weekend from Friday to Tuesday.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:duration">
+			<xs:pattern
+				value="(\-)?P\p{Nd}{1,4}Y\p{Nd}{2}M\p{Nd}{2}DT\p{Nd}{2}H\p{Nd}{2}M\p{Nd}{2}(\.\p{Nd}{1,3})?S" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="TimeZoneId">
+		<xs:annotation>
+			<xs:documentation>The time zone id has to be identical to one of the
+				values listed under the "TZ" column of "List of TZ database time
+				zones". The standard list, which is defined by the Internet Assigned
+				Numbers Authority (http://www.iana.org/time-zones), can be
+				downloaded from: ftp://ftp.iana.org/tz/releases/tzdata2014b.tar.gz
+				and it also can be reviewed here:
+				http://en.wikipedia.org/wiki/List_of_tz_database_time_zones/
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="255" />
+			<xs:whiteSpace value="collapse" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="UserNotEntityOwnerFaultInfo"
+		final="extension restriction">
+		<xs:annotation>
+			<xs:documentation>The user is not the entity owner. The entity owner
+				is required for the activity.
+				:
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence />
+	</xs:complexType>
+
+	<xs:simpleType name="CountryCode">
+		<xs:annotation>
+			<xs:documentation>The 3-letter ISO 3166-1 codes for countries
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AFG">
+				<xs:annotation>
+					<xs:documentation>Afghanistan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALA">
+				<xs:annotation>
+					<xs:documentation>Aland Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ALB">
+				<xs:annotation>
+					<xs:documentation>Albania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DZA">
+				<xs:annotation>
+					<xs:documentation>Algeria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ASM">
+				<xs:annotation>
+					<xs:documentation>American Samoa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AND">
+				<xs:annotation>
+					<xs:documentation>Andorra</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AGO">
+				<xs:annotation>
+					<xs:documentation>Angola</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AIA">
+				<xs:annotation>
+					<xs:documentation>Anguilla</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ATA">
+				<xs:annotation>
+					<xs:documentation>Antarctica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ATG">
+				<xs:annotation>
+					<xs:documentation>Antigua and Barbuda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARG">
+				<xs:annotation>
+					<xs:documentation>Argentina</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARM">
+				<xs:annotation>
+					<xs:documentation>Armenia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ABW">
+				<xs:annotation>
+					<xs:documentation>Aruba</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AUS">
+				<xs:annotation>
+					<xs:documentation>Australia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AUT">
+				<xs:annotation>
+					<xs:documentation>Austria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="AZE">
+				<xs:annotation>
+					<xs:documentation>Azerbaijan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BHS">
+				<xs:annotation>
+					<xs:documentation>Bahamas</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BHR">
+				<xs:annotation>
+					<xs:documentation>Bahrain</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BGD">
+				<xs:annotation>
+					<xs:documentation>Bangladesh</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRB">
+				<xs:annotation>
+					<xs:documentation>Barbados</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BLR">
+				<xs:annotation>
+					<xs:documentation>Belarus</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BEL">
+				<xs:annotation>
+					<xs:documentation>Belgium</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BLZ">
+				<xs:annotation>
+					<xs:documentation>Belize</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BEN">
+				<xs:annotation>
+					<xs:documentation>Benin</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BMU">
+				<xs:annotation>
+					<xs:documentation>Bermuda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BTN">
+				<xs:annotation>
+					<xs:documentation>Bhutan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BOL">
+				<xs:annotation>
+					<xs:documentation>Plurinational State of Bolivia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BES">
+				<xs:annotation>
+					<xs:documentation>Bonaire, Sint Eustatius and Saba
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BIH">
+				<xs:annotation>
+					<xs:documentation>Bosnia and Herzegovina</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BWA">
+				<xs:annotation>
+					<xs:documentation>Botswana</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BVT">
+				<xs:annotation>
+					<xs:documentation>Bouvet Island</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRA">
+				<xs:annotation>
+					<xs:documentation>Brazil</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IOT">
+				<xs:annotation>
+					<xs:documentation>British Indian Ocean Territory</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BRN">
+				<xs:annotation>
+					<xs:documentation>Brunei Darussalam</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BGR">
+				<xs:annotation>
+					<xs:documentation>Bulgaria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BFA">
+				<xs:annotation>
+					<xs:documentation>Burkina Faso</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BDI">
+				<xs:annotation>
+					<xs:documentation>Burundi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KHM">
+				<xs:annotation>
+					<xs:documentation>Cambodia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CMR">
+				<xs:annotation>
+					<xs:documentation>Cameroon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAN">
+				<xs:annotation>
+					<xs:documentation>Canada</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CPV">
+				<xs:annotation>
+					<xs:documentation>Cape Verde</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CYM">
+				<xs:annotation>
+					<xs:documentation>Cayman Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CAF">
+				<xs:annotation>
+					<xs:documentation>Central African Republic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TCD">
+				<xs:annotation>
+					<xs:documentation>Chad</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHL">
+				<xs:annotation>
+					<xs:documentation>Chile</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHN">
+				<xs:annotation>
+					<xs:documentation>China</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CXR">
+				<xs:annotation>
+					<xs:documentation>Christmas Island</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CCK">
+				<xs:annotation>
+					<xs:documentation>Cocos (Keeling) Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COL">
+				<xs:annotation>
+					<xs:documentation>Colombia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COM">
+				<xs:annotation>
+					<xs:documentation>Comoros</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COG">
+				<xs:annotation>
+					<xs:documentation>Congo</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COD">
+				<xs:annotation>
+					<xs:documentation>Congo, the Democratic Republic of the
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="COK">
+				<xs:annotation>
+					<xs:documentation>Cook Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CRI">
+				<xs:annotation>
+					<xs:documentation>Costa Rica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CIV">
+				<xs:annotation>
+					<xs:documentation>Ivory Coast</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HRV">
+				<xs:annotation>
+					<xs:documentation>Croatia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CUB">
+				<xs:annotation>
+					<xs:documentation>Cuba</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CUW">
+				<xs:annotation>
+					<xs:documentation>Curacoa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CYP">
+				<xs:annotation>
+					<xs:documentation>Cyprus</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CZE">
+				<xs:annotation>
+					<xs:documentation>Czech Republic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DNK">
+				<xs:annotation>
+					<xs:documentation>Denmark</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DJI">
+				<xs:annotation>
+					<xs:documentation>Djibouti</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DMA">
+				<xs:annotation>
+					<xs:documentation>Dominica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DOM">
+				<xs:annotation>
+					<xs:documentation>Dominican Republic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ECU">
+				<xs:annotation>
+					<xs:documentation>Ecuador</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EGY">
+				<xs:annotation>
+					<xs:documentation>Egypt</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SLV">
+				<xs:annotation>
+					<xs:documentation>El Salvador</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GNQ">
+				<xs:annotation>
+					<xs:documentation>Equatorial Guinea</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ERI">
+				<xs:annotation>
+					<xs:documentation>Eritrea</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="EST">
+				<xs:annotation>
+					<xs:documentation>Estonia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ETH">
+				<xs:annotation>
+					<xs:documentation>Ethiopia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FLK">
+				<xs:annotation>
+					<xs:documentation>Falkland Islands (Malvinas)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRO">
+				<xs:annotation>
+					<xs:documentation>Faroe Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FJI">
+				<xs:annotation>
+					<xs:documentation>Fiji</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FIN">
+				<xs:annotation>
+					<xs:documentation>Finland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FRA">
+				<xs:annotation>
+					<xs:documentation>France</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GUF">
+				<xs:annotation>
+					<xs:documentation>French Guiana</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PYF">
+				<xs:annotation>
+					<xs:documentation>French Polynesia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ATF">
+				<xs:annotation>
+					<xs:documentation>French Southern Territories</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GAB">
+				<xs:annotation>
+					<xs:documentation>Gabon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GMB">
+				<xs:annotation>
+					<xs:documentation>Gambia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GEO">
+				<xs:annotation>
+					<xs:documentation>Georgia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="DEU">
+				<xs:annotation>
+					<xs:documentation>Germany</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GHA">
+				<xs:annotation>
+					<xs:documentation>Ghana</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GIB">
+				<xs:annotation>
+					<xs:documentation>Gibraltar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GRC">
+				<xs:annotation>
+					<xs:documentation>Greece</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GRL">
+				<xs:annotation>
+					<xs:documentation>Greenland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GRD">
+				<xs:annotation>
+					<xs:documentation>Grenada</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GLP">
+				<xs:annotation>
+					<xs:documentation>Guadeloupe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GUM">
+				<xs:annotation>
+					<xs:documentation>Guam</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GTM">
+				<xs:annotation>
+					<xs:documentation>Guatemala</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GGY">
+				<xs:annotation>
+					<xs:documentation>Guernsey</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GIN">
+				<xs:annotation>
+					<xs:documentation>Guinea</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GNB">
+				<xs:annotation>
+					<xs:documentation>Guinea-Bissau</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GUY">
+				<xs:annotation>
+					<xs:documentation>Guyana</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HTI">
+				<xs:annotation>
+					<xs:documentation>Haiti</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HMD">
+				<xs:annotation>
+					<xs:documentation>Heard Island and McDonald Islands
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VAT">
+				<xs:annotation>
+					<xs:documentation>Holy See (Vatican City State)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HND">
+				<xs:annotation>
+					<xs:documentation>Honduras</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HKG">
+				<xs:annotation>
+					<xs:documentation>Hong Kong</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="HUN">
+				<xs:annotation>
+					<xs:documentation>Hungary</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISL">
+				<xs:annotation>
+					<xs:documentation>Iceland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IND">
+				<xs:annotation>
+					<xs:documentation>India</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IDN">
+				<xs:annotation>
+					<xs:documentation>Indonesia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IRN">
+				<xs:annotation>
+					<xs:documentation>Iran, Islamic Republic of</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IRQ">
+				<xs:annotation>
+					<xs:documentation>Iraq</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IRL">
+				<xs:annotation>
+					<xs:documentation>Ireland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="IMN">
+				<xs:annotation>
+					<xs:documentation>Isle of Man</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISR">
+				<xs:annotation>
+					<xs:documentation>Israel</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ITA">
+				<xs:annotation>
+					<xs:documentation>Italy</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JAM">
+				<xs:annotation>
+					<xs:documentation>Jamaica</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JPN">
+				<xs:annotation>
+					<xs:documentation>Japan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JEY">
+				<xs:annotation>
+					<xs:documentation>Jersey</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="JOR">
+				<xs:annotation>
+					<xs:documentation>Jordan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KAZ">
+				<xs:annotation>
+					<xs:documentation>Kazakhstan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KEN">
+				<xs:annotation>
+					<xs:documentation>Kenya</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KIR">
+				<xs:annotation>
+					<xs:documentation>Kiribati</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRK">
+				<xs:annotation>
+					<xs:documentation>Korea, Democratic People's Republic of
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KOR">
+				<xs:annotation>
+					<xs:documentation>Korea, Republic of</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KWT">
+				<xs:annotation>
+					<xs:documentation>Kuwait</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KGZ">
+				<xs:annotation>
+					<xs:documentation>Kyrgyzstan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LAO">
+				<xs:annotation>
+					<xs:documentation>Lao People's Democratic Republic
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LVA">
+				<xs:annotation>
+					<xs:documentation>Latvia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LBN">
+				<xs:annotation>
+					<xs:documentation>Lebanon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LSO">
+				<xs:annotation>
+					<xs:documentation>Lesotho</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LBR">
+				<xs:annotation>
+					<xs:documentation>Liberia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LBY">
+				<xs:annotation>
+					<xs:documentation>Libya</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LIE">
+				<xs:annotation>
+					<xs:documentation>Liechtenstein</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LTU">
+				<xs:annotation>
+					<xs:documentation>Lithuania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LUX">
+				<xs:annotation>
+					<xs:documentation>Luxembourg</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAC">
+				<xs:annotation>
+					<xs:documentation>Macao</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MKD">
+				<xs:annotation>
+					<xs:documentation>Macedonia, The Former Yugoslav Republic of
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MDG">
+				<xs:annotation>
+					<xs:documentation>Madagascar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MWI">
+				<xs:annotation>
+					<xs:documentation>Malawi</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MYS">
+				<xs:annotation>
+					<xs:documentation>Malaysia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MDV">
+				<xs:annotation>
+					<xs:documentation>Maldives</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MLI">
+				<xs:annotation>
+					<xs:documentation>Mali</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MLT">
+				<xs:annotation>
+					<xs:documentation>Malta</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MHL">
+				<xs:annotation>
+					<xs:documentation>Marshall Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MTQ">
+				<xs:annotation>
+					<xs:documentation>Martinique</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MRT">
+				<xs:annotation>
+					<xs:documentation>Mauritania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MUS">
+				<xs:annotation>
+					<xs:documentation>Mauritius</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MYT">
+				<xs:annotation>
+					<xs:documentation>Mayotte</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MEX">
+				<xs:annotation>
+					<xs:documentation>Mexico</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="FSM">
+				<xs:annotation>
+					<xs:documentation>Micronesia, Federated States of
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MDA">
+				<xs:annotation>
+					<xs:documentation>Moldova, Republic of</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MCO">
+				<xs:annotation>
+					<xs:documentation>Monaco</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MNG">
+				<xs:annotation>
+					<xs:documentation>Mongolia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MNE">
+				<xs:annotation>
+					<xs:documentation>Montenegro</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MSR">
+				<xs:annotation>
+					<xs:documentation>Montserrat</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAR">
+				<xs:annotation>
+					<xs:documentation>Morocco</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MOZ">
+				<xs:annotation>
+					<xs:documentation>Mozambique</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MMR">
+				<xs:annotation>
+					<xs:documentation>Myanmar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NAM">
+				<xs:annotation>
+					<xs:documentation>Namibia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NRU">
+				<xs:annotation>
+					<xs:documentation>Nauru</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NPL">
+				<xs:annotation>
+					<xs:documentation>Nepal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NLD">
+				<xs:annotation>
+					<xs:documentation>Netherlands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NCL">
+				<xs:annotation>
+					<xs:documentation>New Caledonia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NZL">
+				<xs:annotation>
+					<xs:documentation>New Zealand</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIC">
+				<xs:annotation>
+					<xs:documentation>Nicaragua</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NER">
+				<xs:annotation>
+					<xs:documentation>Niger</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NGA">
+				<xs:annotation>
+					<xs:documentation>Nigeria</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NIU">
+				<xs:annotation>
+					<xs:documentation>Niue</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NFK">
+				<xs:annotation>
+					<xs:documentation>Norfolk Island</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MNP">
+				<xs:annotation>
+					<xs:documentation>Northern Mariana Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="NOR">
+				<xs:annotation>
+					<xs:documentation>Norway</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="OMN">
+				<xs:annotation>
+					<xs:documentation>Oman</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PAK">
+				<xs:annotation>
+					<xs:documentation>Pakistan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PLW">
+				<xs:annotation>
+					<xs:documentation>Palau</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PSE">
+				<xs:annotation>
+					<xs:documentation>Palestinian Territory, Occupied
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PAN">
+				<xs:annotation>
+					<xs:documentation>Panama</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PNG">
+				<xs:annotation>
+					<xs:documentation>Papua New Guinea</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRY">
+				<xs:annotation>
+					<xs:documentation>Paraguay</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PER">
+				<xs:annotation>
+					<xs:documentation>Peru</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PHL">
+				<xs:annotation>
+					<xs:documentation>Philippines</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PCN">
+				<xs:annotation>
+					<xs:documentation>Pitcairn</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="POL">
+				<xs:annotation>
+					<xs:documentation>Poland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRT">
+				<xs:annotation>
+					<xs:documentation>Portugal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="PRI">
+				<xs:annotation>
+					<xs:documentation>Puerto Rico</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="QAT">
+				<xs:annotation>
+					<xs:documentation>Qatar</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="REU">
+				<xs:annotation>
+					<xs:documentation>Reunion</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ROU">
+				<xs:annotation>
+					<xs:documentation>Romania</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RUS">
+				<xs:annotation>
+					<xs:documentation>Russian Federation</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="RWA">
+				<xs:annotation>
+					<xs:documentation>Rwanda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="BLM">
+				<xs:annotation>
+					<xs:documentation>Saint Barthelemy</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SHN">
+				<xs:annotation>
+					<xs:documentation>Saint Helena, Ascension and Tristan da Cunha
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="KNA">
+				<xs:annotation>
+					<xs:documentation>Saint Kitts and Nevis</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LCA">
+				<xs:annotation>
+					<xs:documentation>Saint Lucia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="MAF">
+				<xs:annotation>
+					<xs:documentation>Saint Martin (French part)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SPM">
+				<xs:annotation>
+					<xs:documentation>Saint Pierre and Miquelon</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VCT">
+				<xs:annotation>
+					<xs:documentation>Saint Vincent and the Grenadines
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WSM">
+				<xs:annotation>
+					<xs:documentation>Samoa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SMR">
+				<xs:annotation>
+					<xs:documentation>San Marino</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="STP">
+				<xs:annotation>
+					<xs:documentation>Sao Tome and Principe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SAU">
+				<xs:annotation>
+					<xs:documentation>Saudi Arabia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SEN">
+				<xs:annotation>
+					<xs:documentation>Senegal</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SRB">
+				<xs:annotation>
+					<xs:documentation>Serbia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SYC">
+				<xs:annotation>
+					<xs:documentation>Seychelles</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SLE">
+				<xs:annotation>
+					<xs:documentation>Sierra Leone</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SGP">
+				<xs:annotation>
+					<xs:documentation>Singapore</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SXM">
+				<xs:annotation>
+					<xs:documentation>Sint Maarten (Dutch part)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SVK">
+				<xs:annotation>
+					<xs:documentation>Slovakia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SVN">
+				<xs:annotation>
+					<xs:documentation>Slovenia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SLB">
+				<xs:annotation>
+					<xs:documentation>Solomon Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SOM">
+				<xs:annotation>
+					<xs:documentation>Somalia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZAF">
+				<xs:annotation>
+					<xs:documentation>South Africa</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SGS">
+				<xs:annotation>
+					<xs:documentation>South Georgia and the South Sandwich Islands
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SSD">
+				<xs:annotation>
+					<xs:documentation>South Sudan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ESP">
+				<xs:annotation>
+					<xs:documentation>Spain</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="LKA">
+				<xs:annotation>
+					<xs:documentation>Sri Lanka</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SDN">
+				<xs:annotation>
+					<xs:documentation>Sudan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SUR">
+				<xs:annotation>
+					<xs:documentation>Suriname</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SJM">
+				<xs:annotation>
+					<xs:documentation>Svalbard and Jan Mayen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SWZ">
+				<xs:annotation>
+					<xs:documentation>Swaziland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SWE">
+				<xs:annotation>
+					<xs:documentation>Sweden</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="CHE">
+				<xs:annotation>
+					<xs:documentation>Switzerland</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="SYR">
+				<xs:annotation>
+					<xs:documentation>Syrian Arab Republic</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TWN">
+				<xs:annotation>
+					<xs:documentation>Taiwan, Province of China</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TJK">
+				<xs:annotation>
+					<xs:documentation>Tajikistan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TZA">
+				<xs:annotation>
+					<xs:documentation>Tanzania, United Republic of</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="THA">
+				<xs:annotation>
+					<xs:documentation>Thailand</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TLS">
+				<xs:annotation>
+					<xs:documentation>Timor-Leste</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TGO">
+				<xs:annotation>
+					<xs:documentation>Togo</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TKL">
+				<xs:annotation>
+					<xs:documentation>Tokelau</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TON">
+				<xs:annotation>
+					<xs:documentation>Tonga</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TTO">
+				<xs:annotation>
+					<xs:documentation>Trinidad and Tobago</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TUN">
+				<xs:annotation>
+					<xs:documentation>Tunisia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TUR">
+				<xs:annotation>
+					<xs:documentation>Turkey</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TKM">
+				<xs:annotation>
+					<xs:documentation>Turkmenistan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TCA">
+				<xs:annotation>
+					<xs:documentation>Turks and Caicos Islands</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="TUV">
+				<xs:annotation>
+					<xs:documentation>Tuvalu</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UGA">
+				<xs:annotation>
+					<xs:documentation>Uganda</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UKR">
+				<xs:annotation>
+					<xs:documentation>Ukraine</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ARE">
+				<xs:annotation>
+					<xs:documentation>United Arab Emirates</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="GBR">
+				<xs:annotation>
+					<xs:documentation>United Kingdom</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="USA">
+				<xs:annotation>
+					<xs:documentation>United States</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UMI">
+				<xs:annotation>
+					<xs:documentation>United States Minor Outlying Islands
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="URY">
+				<xs:annotation>
+					<xs:documentation>Uruguay</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UZB">
+				<xs:annotation>
+					<xs:documentation>Uzbekistan</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VUT">
+				<xs:annotation>
+					<xs:documentation>Vanuatu</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VEN">
+				<xs:annotation>
+					<xs:documentation>Venezuela, Bolivarian Republic of
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VNM">
+				<xs:annotation>
+					<xs:documentation>Viet Nam</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VGB">
+				<xs:annotation>
+					<xs:documentation>Virgin Islands, British</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="VIR">
+				<xs:annotation>
+					<xs:documentation>Virgin Islands, U.S.</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="WLF">
+				<xs:annotation>
+					<xs:documentation>Wallis and Futuna</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ESH">
+				<xs:annotation>
+					<xs:documentation>Western Sahara</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="YEM">
+				<xs:annotation>
+					<xs:documentation>Yemen</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZMB">
+				<xs:annotation>
+					<xs:documentation>Zambia</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ZWE">
+				<xs:annotation>
+					<xs:documentation>Zimbabwe</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="LanguageCode">
+		<xs:annotation>
+			<xs:documentation>The 3-letter ISO 639 language codes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+
+	<xs:simpleType name="CharacterSetCode">
+		<xs:annotation>
+			<xs:documentation>The character set of the binary object if the Media
+				Type is text
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="US-ASCII">
+				<xs:annotation>
+					<xs:documentation>Seven-bit ASCII, a.k.a. ISO646-US, a.k.a. the
+						Basic Latin block of the Unicode character set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-1">
+				<xs:annotation>
+					<xs:documentation>ISO Latin Alphabet No. 1, a.k.a. ISO-LATIN-1
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-2">
+				<xs:annotation>
+					<xs:documentation>Latin Alphabet No. 2</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-4">
+				<xs:annotation>
+					<xs:documentation>Latin Alphabet No. 4</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-5">
+				<xs:annotation>
+					<xs:documentation>Latin/Cyrillic Alphabet</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-7">
+				<xs:annotation>
+					<xs:documentation>Latin/Greek Alphabet (ISO-8859-7:2003)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-9">
+				<xs:annotation>
+					<xs:documentation>Latin Alphabet No. 5</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-13">
+				<xs:annotation>
+					<xs:documentation>Latin Alphabet No. 7</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="ISO-8859-15">
+				<xs:annotation>
+					<xs:documentation>Latin Alphabet No. 9</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-8">
+				<xs:annotation>
+					<xs:documentation>Eight-bit UCS Transformation Format
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-16BE">
+				<xs:annotation>
+					<xs:documentation>Sixteen-bit UCS Transformation Format, big-endian
+						byte order
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-16LE">
+				<xs:annotation>
+					<xs:documentation>Sixteen-bit UCS Transformation Format,
+						little-endian byte order
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-16">
+				<xs:annotation>
+					<xs:documentation>Sixteen-bit UCS Transformation Format, byte order
+						identified by an optional byte-order mark
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-32">
+				<xs:annotation>
+					<xs:documentation>32-bit Unicode (or UCS) Transformation Format,
+						byte order identified by an optional byte-order mark
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-32BE">
+				<xs:annotation>
+					<xs:documentation>32-bit Unicode (or UCS) Transformation Format,
+						big-endian byte order
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="UTF-32LE">
+				<xs:annotation>
+					<xs:documentation>32-bit Unicode (or UCS) Transformation Format,
+						little-endian byte order
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MediaTypeCode">
+		<xs:annotation>
+			<xs:documentation>Represents an Internet Media Type, as defined in
+				the HTTP specification
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="*/*">
+				<xs:annotation>
+					<xs:documentation>media type that includes all media ranges (i.e.
+						*/*).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc3023.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/atom+xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc3023.txt and
+						http://www.rfc-editor.org/rfc/rfc4287.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/xhtml+xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc3236.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/json">
+				<xs:annotation>
+					<xs:documentation>see http://www.ietf.org/rfc/rfc4627.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/smil+xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.ietf.org/rfc/rfc4536.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/soap+xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc3902.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/zip">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/application
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/gzip">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/application
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/pdf">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/application
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/msword">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/application/msword
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/vnd.ms-excel">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/application/vnd.ms-excel
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration
+				value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+				<xs:annotation>
+					<xs:documentation>see
+						https://www.iana.org/assignments/media-types/application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/widget">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.w3.org/TR/widgets/#media-type-registration-for-applicationw
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/x-www-form-urlencoded">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.w3.org/TR/html401/interact/forms.html#h-17.13.4.1
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="multipart/form-data">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2388.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="application/octet-stream">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2045.txt and
+						http://www.rfc-editor.org/rfc/rfc2046.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="text/plain">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2046.txt and
+						http://www.rfc-editor.org/rfc/rfc3676.txt and
+						http://www.rfc-editor.org/rfc/rfc5147.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="text/xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc3023.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="text/html">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/text/html
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="text/csv">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc4180.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="text/richtext">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2045.txt and
+						http://www.rfc-editor.org/rfc/rfc2046.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/svg+xml">
+				<xs:annotation>
+					<xs:documentation>see http://www.w3.org/TR/SVGTiny12/mimereg.html
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/g3fax">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc1494.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/tiff">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2302.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/png">
+				<xs:annotation>
+					<xs:documentation>see
+						http://www.iana.org/assignments/media-types/image/png
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/jpeg">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2045.txt and
+						http://www.rfc-editor.org/rfc/rfc2046.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+			<xs:enumeration value="image/gif">
+				<xs:annotation>
+					<xs:documentation>see http://www.rfc-editor.org/rfc/rfc2045.txt and
+						http://www.rfc-editor.org/rfc/rfc2046.txt
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="CurrencyCode">
+		<xs:annotation>
+			<xs:documentation>The 3-letter ISO 4217 currency codes
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="OperationStatus">
+		<xs:annotation>
+			<xs:documentation>The OperationStatus enumeration specifies the
+				possible status for operation termination.
+				:
+				Restriction of
+				{http://amdocs/pbg-portfolio/core/types-unqualified/v1}OperationStatus
+				.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SUCCEEDED">
+				<xs:annotation>
+					<xs:documentation>Specifies that the operation has succeeded.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	 <xs:simpleType name="SubscriptionType">
+    <xs:annotation>
+      <xs:documentation>The type of a Subscription, for example PSTN, UMTS.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerbilling/types-unqualified/v1}SubscriptionType .
+Derived from PIM entity SubscriptionType in the domain customerpriceagreement.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ALL_CRM">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ATM">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CALLING_CARD">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CENTREX">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="FRAME_RELAY">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GSM">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="IPVPN_MPLS">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ISDN">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LEASED_LINE">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ONE_EIGHT_XX">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="ONE_SEVEN_XX">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PBX">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PSTN">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="UMTS">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+   <xs:simpleType name="CustomerTypeLevel1All">
+    <xs:annotation>
+      <xs:documentation>The first level categorization of a Customer. For example residential, business, corporate, government.
+:
+Restriction of {http://amdocs/pbg-portfolio/customerprofile/types-unqualified/v1}CustomerTypeLevel1 .
+Derived from PIM entity CustomerTypeLevel1 in the domain customer.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BUSINESS_ANON">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="CORPORATE">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="GOVERNMENT">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RESIDENTIAL">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="RESIDENTIAL_ANON">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="SMALL_BUSINESS">
+        <xs:annotation>
+          <xs:documentation></xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="FlexAttrForTextOnly" abstract="true">
+    <xs:annotation>
+      <xs:documentation>Defines a flexble attribute; an attribute of an object that is not statically defined, but rather defined by some application specific meta-data about the entity. Entities that might have flexible attributes include anattribute flexAttrs whose type is FlexAttr[]. The definition and derivation of the flexible attributes is defined by the provider.</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="name" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The name of this flexible attribute.</xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:maxLength value="127"/>
+            <xs:whiteSpace value="collapse"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  
+  <xs:complexType name="FlexAttrTextOnly" final="extension restriction">
+    <xs:annotation>
+      <xs:documentation>A flexible attribute that is text.</xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="tns:FlexAttrForTextOnly">
+        <xs:sequence>
+          <xs:element name="value" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The value of the flexible attribute.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+              <xs:restriction base="xs:string">
+                <xs:maxLength value="1023"/>
+              </xs:restriction>
+            </xs:simpleType>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  
+  <xs:simpleType name="GeographicPostalAreaCode">
+  	 <xs:annotation>
+      <xs:documentation>Particular places of postal areas (commonly known as postal codes or zip codes) in countries which can be located on the globe.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+		<xs:maxLength value="19"/>
+	</xs:restriction>
+  </xs:simpleType>
+  
+  <xs:complexType name="FlexAttributes">
+	<xs:annotation>
+		<xs:documentation></xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+	<xs:element name="customerProblemFlexAtt" type="tns:FlexAttrText" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>>An array of flexible attributes to add/update to an
+			object, such as Customer Problem.
+			Validated against BPT Data provided during BPT gathering process.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			</xs:sequence>
+  </xs:complexType>
+</xs:schema>
+

@@ -69,8 +69,13 @@
     <Compile Include="DataContracts\ConnectService.cs" />
     <Compile Include="DataContracts\ConnectServiceResponse.cs" />
     <Compile Include="DataContracts\ExtendedResponse.cs" />
+    <Compile Include="DataContracts\PortingDonor.cs" />
     <Compile Include="DataContracts\PortingReferenceID.cs" />
     <Compile Include="DataContracts\PortingRequestID.cs" />
+    <Compile Include="DataContracts\PortingResult.cs" />
+    <Compile Include="DataContracts\PortInNotification.cs" />
+    <Compile Include="DataContracts\PortInNotificationResponse.cs" />
+    <Compile Include="DataContracts\PortInNotificationResultCode.cs" />
     <Compile Include="DataContracts\ProductServiceID.cs" />
     <Compile Include="DataContracts\SDPServiceHeaders.cs" />
     <Compile Include="DataContracts\SDPSeverity.cs" />
@@ -86,6 +91,18 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="sdp_singtel_core_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sdp_singtel_customerproduct_common_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sdp_singtel_service_common.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="sdp_singtel_service_manage_porting_v1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

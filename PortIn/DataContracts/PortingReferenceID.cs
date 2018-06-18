@@ -7,7 +7,7 @@ using System.Web;
 namespace PortIn.DataContracts
 {
     [MessageContract]
-    public class PortingReferenceID
+    public class PortingRefernceID
     {
         [MessageBodyMember]
         public string Id { get; set; }
