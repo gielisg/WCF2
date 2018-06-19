@@ -13,10 +13,10 @@ namespace PortIn.DataContracts
         [MessageHeader(Name = "sdpServiceHeaders")]
         public SDPServiceHeaders sdpServiceHeaders { get; set; }
 
-        [MessageBodyMember]
+        [MessageBodyMember(Name = "requestId")]
         public PortingRequestID RequestId { get; set; }
 
-        [MessageBodyMember]
+        [MessageBodyMember(Name = "serviceDetailElement")]
         public ServiceInfo ServiceDetailElement { get; set; }
 
     }

@@ -79,6 +79,7 @@
     <Compile Include="DataContracts\PortInNotificationResultCode.cs" />
     <Compile Include="DataContracts\ProductServiceID.cs" />
     <Compile Include="DataContracts\SDPServiceHeaders.cs" />
+    <Compile Include="DataContracts\SDPServiceResponseHeaders.cs" />
     <Compile Include="DataContracts\SDPSeverity.cs" />
     <Compile Include="DataContracts\SDPStatusFault.cs" />
     <Compile Include="DataContracts\SDPStatusLine.cs" />
