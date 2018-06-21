@@ -14,6 +14,14 @@ namespace PortIn
         [OperationContract]
         [FaultContract(typeof(SDPStatusFault), Name = "portInNotificationFault", Namespace = "sgc")]
         PortInNotificationResponse PortInNotification(PortInNotification Request);
-        
+
+        [OperationContract]
+        [FaultContract(typeof(SDPStatusFault), Name = "validatePortOutFault", Namespace = "sgc")]
+        ValidatePortOutResponse ValidatePortOut(ValidatePortOut Request);
+
+        [OperationContract]
+        [FaultContract(typeof(SDPStatusFault), Name = "validatePortOutInternalFault", Namespace = "sgc")]
+        ValidatePortOutInternalResponse validatePortOutInternal(ValidatePortOutInternal Request);
+
     }
 }

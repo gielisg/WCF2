@@ -128,5 +128,65 @@ namespace PortIn
             return portInNotificationResponse;
 
         }
+
+
+        public ValidatePortOutResponse ValidatePortOut(ValidatePortOut Request)
+        {
+            //throw new NotImplementedException();
+            ValidatePortOutResponse validatePortOutResponse = new ValidatePortOutResponse();
+            //  Check the Reference Id is not null
+            if (Request.ReferenceId.Id == null)
+            {
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "Reference Id is null"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
+            }
+
+            validatePortOutResponse.RequestId = Request.ReferenceId.Id;
+            validatePortOutResponse.ReferenceId = Request.ReferenceId.Id;
+            validatePortOutResponse.ResponseDateTime = DateTime.Now;
+            validatePortOutResponse.RequestDateTime = Request.sdpServiceHeaders.consumerReferenceDateTime;
+            validatePortOutResponse.Results = "SUCCESS";
+            return validatePortOutResponse;
+        }
+
+        public ValidatePortOutInternalResponse validatePortOutInternal(ValidatePortOutInternal Request)
+        {
+            //throw new NotImplementedException();
+            ValidatePortOutInternalResponse validatePortOutInternalResponse = new ValidatePortOutInternalResponse();
+            //  Check the Reference Id is not null
+            if (Request.ReferenceId == null)
+            {
+                var sdpStatusFault = new SDPStatusFault()
+                {
+                    consumerReferenceID = Request.sdpServiceHeaders.consumerReferenceId,
+                    sdpStatusLine = new SDPStatusLine()
+                    {
+                        severity = SDPSeverity.ERROR,
+                        statusCode = "500",
+                        statusDescription = "Reference Id is null"
+                    }
+
+                };
+                throw new FaultException<SDPStatusFault>(sdpStatusFault);
+            }
+
+            validatePortOutInternalResponse.RequestId = Request.ReferenceId;
+            validatePortOutInternalResponse.ReferenceId = Request.ReferenceId;
+            validatePortOutInternalResponse.ResponseDateTime = DateTime.Now;
+            validatePortOutInternalResponse.RequestDateTime = Request.sdpServiceHeaders.consumerReferenceDateTime;
+            validatePortOutInternalResponse.Results = "SUCCESS";
+            return validatePortOutInternalResponse;
+        }
+     
     }
 }
